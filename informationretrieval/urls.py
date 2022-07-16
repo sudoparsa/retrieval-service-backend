@@ -7,4 +7,5 @@ urlpatterns = [
     path('health/classification/', views_api.ClassificationView.as_view()),
     path('health/clustering/', views_api.ClusteringView.as_view()),
     path('health/clustering_result/', views_api.ClusteringResultsView.as_view()),
+    path('health/link_analyser/', views_api.LinkAnalyserView.as_view()),
 ]
