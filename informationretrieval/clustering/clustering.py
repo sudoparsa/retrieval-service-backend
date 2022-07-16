@@ -13,6 +13,8 @@ class KmeansClustering:
         with open('models/classification-clustering/clustering_embedding.json', 'r', encoding="utf-8") as f:
             self.all_data = json.loads(f.read())
         self.df = pd.DataFrame(self.all_data)
+        with open('models/classification-clustering/clustering_result.json', 'r', encoding="utf-8") as f:
+            self.metrics = json.loads(f.read())
 
     def predict(self, text, k=10):
         emb = fasttext_model.get_text_embeding(text)

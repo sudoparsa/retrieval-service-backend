@@ -1,3 +1,3 @@
 from .query_retrieval_view import QueryRetrievalView
 from .classification_view import ClassificationView
-from .clustering_view import ClusteringView
+from .clustering_view import ClusteringView, ClusteringResultsView
