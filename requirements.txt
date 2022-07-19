@@ -4,6 +4,7 @@ charset-normalizer==2.1.0
 colorama==0.4.5
 Cython==0.29.28
 Django==3.2.14
+django-cors-headers==3.13.0
 django-filter==22.1
 djangorestframework==3.13.1
 filelock==3.7.1
