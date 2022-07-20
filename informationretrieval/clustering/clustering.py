@@ -4,7 +4,7 @@ import pandas as pd
 
 import numpy as np
 
-# from informationretrieval.health_retrieval import fasttext_model
+# from informationretrieval.retrieval_systems import fasttext_model
 
 
 class KmeansClustering:

@@ -1,20 +1,19 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from informationretrieval.health_retrieval import *
+from informationretrieval.retrieval_systems import *
 
 
 class QueryRetrievalView(APIView):
 
     def get(self, request, *args, **kwargs):
         method = self.request.query_params['method']
-        model = self.get_model(method)
+        section = 'abstract' if 'section' not in self.request.query_params else self.request.query_params['section']
         query = self.request.query_params['query']
         k = 10 if 'k' not in self.request.query_params else int(self.request.query_params['k'])
-        ls = model.get_query(query, k)
-        final_ls = []
-        for item in ls:
-            final_ls.append({'title': item[0], 'url': item[1]})
-        return Response(final_ls)
+        k = min(k, 20)
+        model = self.get_model(method)
+        ls = model.run(query, section, k)
+        return Response(ls)
 
     def get_model(self, method):
         if method == 'fasttext':

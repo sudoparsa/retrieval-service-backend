@@ -2,7 +2,7 @@ import pickle
 
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
-from informationretrieval.health_retrieval import fasttext_model
+from informationretrieval.retrieval_systems import fasttext_model
 from informationretrieval.utils import get_category_title
 
 

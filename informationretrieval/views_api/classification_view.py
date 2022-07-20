@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 
 # from informationretrieval.classification import naive_bayes_classifier, logistic_regression_classifier, \
 #     transformer_classifier
-from informationretrieval.health_retrieval import *
+from informationretrieval.retrieval_systems import *
 
 
 class ClassificationView(APIView):
