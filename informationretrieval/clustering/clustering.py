@@ -4,7 +4,7 @@ import pandas as pd
 
 import numpy as np
 
-from informationretrieval.health_retrieval import fasttext_model
+# from informationretrieval.health_retrieval import fasttext_model
 
 
 class KmeansClustering:
@@ -32,4 +32,4 @@ class KmeansClustering:
         return np.dot(vector_1, vector_2) / (np.linalg.norm(vector_1) * np.linalg.norm(vector_2))
 
 
-kemans_clustering_model = KmeansClustering()
+# kemans_clustering_model = KmeansClustering()

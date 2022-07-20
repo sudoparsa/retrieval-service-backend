@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from informationretrieval.utils import link_analyser_categories_data
+# from informationretrieval.utils import link_analyser_categories_data
 
 
 class LinkAnalyserView(APIView):

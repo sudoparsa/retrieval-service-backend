@@ -1,7 +1,7 @@
 import codecs
 import json
 import numpy as np
-from hazm import *
+# from hazm import *
 import torch
 
 from transformers import BigBirdModel, AutoTokenizer
@@ -46,4 +46,4 @@ class TransformerEmb:
         return [(k, v[1]) for k, v in sorted(data.items(), key=lambda item: item[1][0])][::-1][:k]
 
 
-transformer_model = TransformerEmb()
+# transformer_model = TransformerEmb()

@@ -3,7 +3,6 @@ import json
 import pickle
 import numpy as np
 from scipy import sparse
-from hazm import *
 
 
 class TfidfModel:
@@ -47,4 +46,4 @@ class TfidfModel:
         return [(k, v[1]) for k, v in sorted(data.items(), key=lambda item: item[1][0])][::-1][:k]
 
 
-tfidf_model = TfidfModel()
+# tfidf_model = TfidfModel()

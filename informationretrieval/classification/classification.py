@@ -34,6 +34,6 @@ class TransformerClassifier:
         return get_category_title(output[0].softmax(1).argmax().item())
 
 
-transformer_classifier = TransformerClassifier()
-logistic_regression_classifier = LogisticRegressionClassifier()
-naive_bayes_classifier = NaiveBayesClassifier()
+# transformer_classifier = TransformerClassifier()
+# logistic_regression_classifier = LogisticRegressionClassifier()
+# naive_bayes_classifier = NaiveBayesClassifier()

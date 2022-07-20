@@ -1,6 +1,6 @@
 import json
 import numpy as np
-from hazm import *
+# from hazm import *
 from random import shuffle
 
 
@@ -80,4 +80,4 @@ class BooleanModel:
         return final_ls
 
 
-boolean_model = BooleanModel()
+# boolean_model = BooleanModel()

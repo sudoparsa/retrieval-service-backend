@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from informationretrieval.classification import naive_bayes_classifier, logistic_regression_classifier, \
-    transformer_classifier
+# from informationretrieval.classification import naive_bayes_classifier, logistic_regression_classifier, \
+#     transformer_classifier
 from informationretrieval.health_retrieval import *
 
 

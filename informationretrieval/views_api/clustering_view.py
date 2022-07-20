@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from informationretrieval.clustering import kemans_clustering_model
+# from informationretrieval.clustering import kemans_clustering_model
 
 
 class ClusteringView(APIView):

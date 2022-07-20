@@ -1,7 +1,6 @@
 import codecs
 import json
 import numpy as np
-from hazm import *
 from gensim.models.fasttext import FastText
 
 
@@ -51,4 +50,4 @@ class FastTextEmb:
         return emb
 
 
-fasttext_model = FastTextEmb()
+# fasttext_model = FastTextEmb()
