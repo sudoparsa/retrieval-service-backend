@@ -1,6 +1,6 @@
 import json
 import time
-from .preprocess import Preprocess
+from informationretrieval.utils.preprocess import Preprocess
 import numpy as np
 import os
 from gensim.models import KeyedVectors

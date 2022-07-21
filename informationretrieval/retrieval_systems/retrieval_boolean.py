@@ -1,6 +1,6 @@
 import json
 import time
-from .preprocess import Preprocess
+from informationretrieval.utils.preprocess import Preprocess
 
 
 class BooleanRetrieval:
