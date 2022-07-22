@@ -17,7 +17,7 @@ class ElasticSearch():
 
     def __start_elasticsearch_server(self, elasticsearch_path):
         os.startfile(elasticsearch_path)
-        time.sleep(20)
+        time.sleep(33)
 
     def create_index(self, index, data_path):
         df = pd.read_json(data_path)

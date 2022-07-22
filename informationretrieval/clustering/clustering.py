@@ -46,7 +46,7 @@ class KmeansClustering:
         return r
 
     def most_similar(self, query, k):
-        query = self.preprocessor.run(query)
+        query = self.preprocessor.run_spacy(query)
         query_embedding = self.model.encode(query)
         query_cluster = self.kmeans.predict(query_embedding.reshape(1, -1))
         cluster_embeddings = self.get_cluster_embeddings(query_cluster)
