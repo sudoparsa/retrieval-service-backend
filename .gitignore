@@ -240,4 +240,4 @@ pip-selfcheck.json
 .idea
 static
 files
-models
+models/FastText/word_vectors.kv.vectors_ngrams.npy
