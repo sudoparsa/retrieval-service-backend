@@ -25,7 +25,7 @@ class BooleanRetrieval:
         doc_list = list(dict.fromkeys(doc_list))
         return doc_list[:k]
 
-    def run(self, query, section, k=10):
+    def run(self, query, section='title', k=10, query_expansion=False):
         if section not in ['title', 'author']:
             return []
         start_time = time.time()

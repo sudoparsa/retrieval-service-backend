@@ -36,7 +36,7 @@ class TFIDFRetrieval:
         indexs = [x[1] for x in results]
         return indexs[:k]
 
-    def run(self, query, section, k=10):
+    def run(self, query, section='title', k=10, query_expansion=False):
         start_time = time.time()
         result = self.run_query(query, section, k)
         print(f'Query: {query}')

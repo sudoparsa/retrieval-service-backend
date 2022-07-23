@@ -8,11 +8,13 @@ class QueryRetrievalView(APIView):
     def get(self, request, *args, **kwargs):
         method = self.request.query_params['method']
         section = 'abstract' if 'section' not in self.request.query_params else self.request.query_params['section']
+        query_expansion = False if 'expansion' not in self.request.query_params else self.request.query_params[
+                                                                                         'expansion'] == 'true'
         query = self.request.query_params['query']
         k = 10 if 'k' not in self.request.query_params else int(self.request.query_params['k'])
         k = min(k, 20)
         model = self.get_model(method)
-        ls = model.run(query, section, k)
+        ls = model.run(query, section=section, k=k, query_expansion=query_expansion)
         return Response(ls)
 
     def get_model(self, method):
@@ -25,5 +27,5 @@ class QueryRetrievalView(APIView):
         if method == 'tfidf':
             return tfidf_model
         if method == 'elastic':
-            es_model
+            return es_model
         return es_model

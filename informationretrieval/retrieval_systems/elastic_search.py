@@ -2,6 +2,8 @@ import time
 import os
 import pandas as pd
 from elasticsearch import Elasticsearch
+from subprocess import Popen
+
 
 
 class ElasticSearch():
@@ -17,7 +19,7 @@ class ElasticSearch():
 
     def __start_elasticsearch_server(self, elasticsearch_path):
         os.startfile(elasticsearch_path)
-        time.sleep(33)
+        time.sleep(35)
 
     def create_index(self, index, data_path):
         df = pd.read_json(data_path)
@@ -67,7 +69,7 @@ class ElasticSearch():
         print()
         return res
 
-    def run(self, query, section, k=10):
+    def run(self, query, section='title', k=10, query_expansion=False):
         start_time = time.time()
         print(f'Query: {query}')
         es_client = Elasticsearch(hosts=self.hosts)
