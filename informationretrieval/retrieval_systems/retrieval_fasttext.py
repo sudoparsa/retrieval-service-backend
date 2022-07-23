@@ -32,7 +32,7 @@ class FastTextRetrieval:
 
     def show(self, indexes, scores):
         result = []
-        print('\n')
+        print()
         print('Similar Papers using Cosine Similarity:')
         for ix, i in zip(indexes, range(len(indexes))):
             print(f'\n{i}.', end='')

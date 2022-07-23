@@ -21,7 +21,7 @@ class KmeansClustering:
 
     def show(self, indexes, scores, cluster_embeddings):
         result = []
-        print('\n')
+        print()
         print('Similar Papers using Cosine Similarity:')
         for ix, i in zip(indexes, range(len(indexes))):
             print(f'\n{i}.', end='')

@@ -1,12 +1,10 @@
 import time
-import os
 import pandas as pd
 from elasticsearch import Elasticsearch
 from subprocess import Popen
 
 
-
-class ElasticSearch():
+class ElasticSearch:
     def __init__(self,
                  data_path='data/semanticscholar.json',
                  elasticsearch_path='..\\elasticsearch-7.3.2\\bin\\elasticsearch.bat'):
@@ -18,7 +16,7 @@ class ElasticSearch():
         self.create_index(self.index, data_path)
 
     def __start_elasticsearch_server(self, elasticsearch_path):
-        os.startfile(elasticsearch_path)
+        Popen(elasticsearch_path)
         time.sleep(35)
 
     def create_index(self, index, data_path):
@@ -57,7 +55,7 @@ class ElasticSearch():
 
     def show(self, results):
         res = []
-        print('\n')
+        print()
         print('Results:')
         for ix, paper in enumerate(results):
             print(f'\n{ix}.', end='')

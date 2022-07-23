@@ -46,7 +46,7 @@ class TFIDFRetrieval:
 
     def show(self, indexes):
         result = []
-        print('\n')
+        print()
         print('Similar Papers:')
         for ix, i in zip(indexes, range(len(indexes))):
             print(f'\n{i}.', end='')

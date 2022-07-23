@@ -26,9 +26,9 @@ class BooleanRetrieval:
         return doc_list[:k]
 
     def run(self, query, section='title', k=10, query_expansion=False):
-        if section not in ['title', 'author']:
-            return []
         start_time = time.time()
+        if section != 'title':
+            section = 'author'
         result = self.bool_query(query, section, k)
         print(f'Query: {query}')
         result = self.show(result)
@@ -37,7 +37,7 @@ class BooleanRetrieval:
 
     def show(self, indexes):
         result = []
-        print('\n')
+        print()
         print('Similar Papers:')
         for ix, i in zip(indexes, range(len(indexes))):
             print(f'\n{i}.', end='')
