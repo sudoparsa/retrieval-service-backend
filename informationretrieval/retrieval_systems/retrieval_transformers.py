@@ -36,7 +36,7 @@ class TransformerRetrieval:
 
     def most_similar(self, query, is_query_embedded, k):
         if not is_query_embedded:
-           query_embedding = self.embed(query)
+            query_embedding = self.embed(query)
         else:
             query_embedding = query
         embeddings = self.doc_embedding['embedding']
