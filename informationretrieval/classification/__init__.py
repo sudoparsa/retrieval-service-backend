@@ -1,2 +1,1 @@
-from .classification import nb_classifier
-# logistic_regression_classifier, transformer_classifier
+from .classification import nb_classifier, transformer_classifier

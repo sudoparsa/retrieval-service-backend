@@ -1,8 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from informationretrieval.classification import nb_classifier
-#     transformer_classifier
-from informationretrieval.retrieval_systems import *
+from informationretrieval.classification import nb_classifier, transformer_classifier
 
 
 class ClassificationView(APIView):
