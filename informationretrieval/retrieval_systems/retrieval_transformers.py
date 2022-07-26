@@ -3,7 +3,8 @@ import time
 from informationretrieval.utils.preprocess import Preprocess
 from informationretrieval.utils.expansion import Rocchio
 import numpy as np
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class TransformerRetrieval:
@@ -36,11 +37,11 @@ class TransformerRetrieval:
 
     def most_similar(self, query, is_query_embedded, k):
         if not is_query_embedded:
-            query_embedding = self.embed(query)
+            query_embedding = self.embed(query).reshape(1, -1)
         else:
             query_embedding = query
         embeddings = self.doc_embedding['embedding']
-        cosine_scores = util.dot_score(query_embedding, embeddings).detach().cpu().numpy()[0]
+        cosine_scores = cosine_similarity(query_embedding, embeddings)[0]
         similar_ix = np.argsort(cosine_scores)[::-1][:k]
         return similar_ix, cosine_scores
 

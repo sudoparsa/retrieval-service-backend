@@ -72,7 +72,7 @@ class FastTextRetrieval:
         start_time = time.time()
         print(f'Query: {query}')
         if query_expansion:
-            query = Rocchio(self, query, k)
+            query = Rocchio(self, query)
         indx, scores = self.most_similar(query, query_expansion, k)
         result = self.show(indx, scores=scores)
         print(f'Execution time: {time.time() - start_time}')
