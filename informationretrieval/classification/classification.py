@@ -1,39 +1,36 @@
 import pickle
-
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-
-from informationretrieval.retrieval_systems import fasttext_model
-from informationretrieval.utils import get_category_title
+import time
 
 
-class ClassicClassifier:
-    def predict(self, text):
-        emb = fasttext_model.get_text_embeding(text)
-        return get_category_title(self.model.predict(emb.reshape(1, -1))[0])
+class NBClassifier:
+    def __init__(self,
+                 nb_classifier_path="models/Classification/NB_Classification/nb_classifier.pickle",
+                 vectorizer_path="models/Classification/NB_Classification/vectorizer.pk"):
+        print('Loading Naive Bayes')
+        self.nb_classifier = pickle.load(open(nb_classifier_path, 'rb'))
+        self.vectorizer = pickle.load(open(vectorizer_path, 'rb'))
+        self.label2field = {
+            0: "Computer Science",
+            1: "Engineering",
+            2: "Medicine",
+            3: "Psychology",
+            4: "Materials Science",
+        }
+
+    def nb_classify(self, query):
+        query_dtm = self.vectorizer.transform([query])
+        result_class = self.nb_classifier.predict(query_dtm)[0]
+        result_prob = self.nb_classifier.predict_proba(query_dtm)[0][result_class]
+        return result_class, result_prob
+
+    def run(self, query):
+        start_time = time.time()
+        result_class, result_prob = self.nb_classify(query)
+        print(f"Query: {query}")
+        print(f"Predicted Category: {[self.label2field[result_class]]} With Probability: {result_prob}")
+        print(f"Execution time: {time.time() - start_time}")
+        return {'label': self.label2field[result_class],
+                'score': result_prob}
 
 
-class NaiveBayesClassifier(ClassicClassifier):
-    def __init__(self):
-        self.model = pickle.load(open('models/classification-clustering/naive-bayes.sav', 'rb'))
-
-
-class LogisticRegressionClassifier(ClassicClassifier):
-    def __init__(self):
-        self.model = pickle.load(open('models/classification-clustering/logistic-regression.sav', 'rb'))
-
-
-class TransformerClassifier:
-    def __init__(self):
-        self.model = AutoModelForSequenceClassification.from_pretrained('models/transformer_model',
-                                                                        local_files_only=True)
-        self.tokenizer = AutoTokenizer.from_pretrained('models/pretrained-transformer-tokenizer')
-
-    def predict(self, text):
-        _input = self.tokenizer(text, truncation=True, padding=True, return_tensors='pt')
-        output = self.model(**_input)
-        return get_category_title(output[0].softmax(1).argmax().item())
-
-
-# transformer_classifier = TransformerClassifier()
-# logistic_regression_classifier = LogisticRegressionClassifier()
-# naive_bayes_classifier = NaiveBayesClassifier()
+nb_classifier = NBClassifier()

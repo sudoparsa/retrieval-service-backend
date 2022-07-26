@@ -1,7 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-# from informationretrieval.classification import naive_bayes_classifier, logistic_regression_classifier, \
+from informationretrieval.classification import nb_classifier
 #     transformer_classifier
 from informationretrieval.retrieval_systems import *
 
@@ -12,13 +11,11 @@ class ClassificationView(APIView):
         method = self.request.query_params['method']
         model = self.get_model(method)
         query = self.request.query_params['query']
-        return Response(model.predict(query))
+        return Response(model.run(query))
 
     def get_model(self, method):
         if method == 'naive_bayes':
-            return naive_bayes_classifier
-        if method == 'logistic_regression':
-            return logistic_regression_classifier
+            return nb_classifier
         if method == 'transformers':
             return transformer_classifier
-        return fasttext_model
+        return transformer_classifier
