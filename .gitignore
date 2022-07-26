@@ -241,3 +241,4 @@ pip-selfcheck.json
 static
 files
 models/FastText/word_vectors.kv.vectors_ngrams.npy
+models/Classification/Transformer_Classification/tf_model.h5

@@ -40,8 +40,8 @@ class NBClassifier:
 
 class TransformerClassifier:
     def __init__(self,
-                 transformer_classifier_path="models/Classification/Transformer Classification/",
-                 vectorizer_path="models/Classification/Transformer Classification/tokenizer.pk"):
+                 transformer_classifier_path="models/Classification/Transformer_Classification/",
+                 vectorizer_path="models/Classification/Transformer_Classification/tokenizer.pk"):
         print('Loading Transformer Classifier...')
         if not os.path.isfile(transformer_classifier_path + "tf_model.h5"):
             self.download_model(transformer_classifier_path)
